@@ -52,7 +52,7 @@ export function SectionFaq() {
                             в любое время суток
                         </h2>
                         <p className="faq__banner-subtitle">Наша поддержка работает круглосуточно</p>
-                        <a href="#" className="faq__banner-link">
+                        <a href="https://t.me/mskhost_sup" className="faq__banner-link">
                             Написать нам
                             <svg xmlns="http://www.w3.org/2000/svg" width={19} height={19} viewBox="0 0 19 19" fill="none">
                                 <path d="M3.16634 9.5L15.833 9.5M15.833 9.5L11.083 14.25M15.833 9.5L11.083 4.75" stroke="#873BFF" strokeWidth="1.58333" strokeLinecap="round" strokeLinejoin="round" />

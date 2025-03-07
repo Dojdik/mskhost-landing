@@ -80,7 +80,7 @@ export function BurgerMenu({ isBurgerMenuOpen, burgerClassName }) {
                     <a href="#reviews" className="header__item-link">Мнение пользователей</a>
                 </li>
                 </ul>
-                <a href="#" className="header__link">
+                <a href="https://my.msk.host" className="header__link">
                 Личный кабинет
                 </a>
             </div>

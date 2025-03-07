@@ -1,6 +1,62 @@
 import { BasePage } from "@/components/common/BasePage";
+import { SectionFaq } from "../components/section/SectionFaq";
 
 export function WebHostingPage() {
+
+    const presets = [
+        {
+            "id": "8bc54528-4f4f-4693-9643-0f217d5806f6",
+            "name": "Site-16",
+            "cost": 109,
+            "old_cost": null,
+            "limit_quota": 16384,
+            "limit_db": 2,
+            "limit_db_users": 1,
+            "limit_ftp_users": 1,
+            "limit_webdomains": 2,
+            "limit_domains": 2,
+            "limit_emaildomains": 2
+        },
+        {
+            "id": "6a43d49c-0b73-42e7-a5d2-c02ee8263956",
+            "name": "Site-41",
+            "cost": 182,
+            "old_cost": null,
+            "limit_quota": 41984,
+            "limit_db": 4,
+            "limit_db_users": 4,
+            "limit_ftp_users": 2,
+            "limit_webdomains": 15,
+            "limit_domains": 15,
+            "limit_emaildomains": 15
+        },
+        {
+            "id": "663f334f-636e-4d84-9d15-74dd77a4f9c0",
+            "name": "Site-51",
+            "cost": 254,
+            "old_cost": null,
+            "limit_quota": 52224,
+            "limit_db": 8,
+            "limit_db_users": 8,
+            "limit_ftp_users": 4,
+            "limit_webdomains": 35,
+            "limit_domains": 35,
+            "limit_emaildomains": 35
+        },
+        {
+            "id": "3f3ef40a-6430-4f82-9bae-b7c0b57a6ffc",
+            "name": "Limitless",
+            "cost": 1481,
+            "old_cost": null,
+            "limit_quota": 102400,
+            "limit_db": "∞",
+            "limit_db_users": "∞",
+            "limit_ftp_users": "∞",
+            "limit_webdomains": "∞",
+            "limit_domains": "∞",
+            "limit_emaildomains": "∞"
+        }
+    ]
 
     const headerLogo = (
         <svg xmlns="http://www.w3.org/2000/svg" width={146} height={40} viewBox="0 0 146 40" fill="none">
@@ -123,302 +179,55 @@ export function WebHostingPage() {
                             </p>
                         </div>
                         <div className="tariffs__cards">
-                            <div className="tariffs__card scroll">
+                            {presets.map((x) => (
+                                <div className={`tariffs__card scroll ${x.name == 'Limitless' ? 'tariffs__card-limitless' : ''}`}>
                                 <div className="tariffs__card-main">
                                     <div className="tariffs__card-head">
-                                        <p className="tariffs__card-name">Site-16</p>
-                                        <p className="tariffs__card-desc">Идеальное решение для размещения лендинга или
-                                            сайта-визитки</p>
-                                    </div>
-                                    <ul className="tariffs__card-list">
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 базы данных</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">1 пользователь БД</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">1 пользователь FTP</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 веб-домена</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 домена</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">16 ГБ NVMe</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 почтовых домена</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="tariffs__card-bottom">
-                                    <div className="tariffs__card-price">
-                                        <span className="tariffs__card-price-value">179.90 ₽</span> /мес
-                                    </div>
-                                    <a href="#" className="tariffs__card-btn btn-grad">
-                                        Заказать
-                                        <svg xmlns="http://www.w3.org/2000/svg" width={20} height={19} viewBox="0 0 20 19" fill="none">
-                                            <path d="M3.66634 9.5L16.333 9.5M16.333 9.5L11.583 14.25M16.333 9.5L11.583 4.75" stroke="white" strokeWidth="1.58333" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="tariffs__card scroll">
-                                <div className="tariffs__card-main">
-                                    <div className="tariffs__card-head">
-                                        <p className="tariffs__card-name">Site-32</p>
-                                        <p className="tariffs__card-desc">Идеальное решение для размещения лендинга или
-                                            сайта-визитки</p>
-                                    </div>
-                                    <ul className="tariffs__card-list">
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 базы данных</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">1 пользователь БД</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">1 пользователь FTP</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 веб-домена</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 домена</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">16 ГБ NVMe</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 почтовых домена</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="tariffs__card-bottom">
-                                    <div className="tariffs__card-price">
-                                        <span className="tariffs__card-price-value">179.90 ₽</span> /мес
-                                    </div>
-                                    <a href="#" className="tariffs__card-btn btn-grad">
-                                        Заказать
-                                        <svg xmlns="http://www.w3.org/2000/svg" width={20} height={19} viewBox="0 0 20 19" fill="none">
-                                            <path d="M3.66634 9.5L16.333 9.5M16.333 9.5L11.583 14.25M16.333 9.5L11.583 4.75" stroke="white" strokeWidth="1.58333" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="tariffs__card scroll">
-                                <div className="tariffs__card-main">
-                                    <div className="tariffs__card-head">
-                                        <p className="tariffs__card-name">Site-64</p>
-                                        <p className="tariffs__card-desc">Идеальное решение для размещения лендинга или
-                                            сайта-визитки</p>
-                                    </div>
-                                    <ul className="tariffs__card-list">
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 базы данных</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">1 пользователь БД</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">1 пользователь FTP</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 веб-домена</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 домена</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">16 ГБ NVMe</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 почтовых домена</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="tariffs__card-bottom">
-                                    <div className="tariffs__card-price">
-                                        <span className="tariffs__card-price-value">179.90 ₽</span> /мес
-                                    </div>
-                                    <a href="#" className="tariffs__card-btn btn-grad">
-                                        Заказать
-                                        <svg xmlns="http://www.w3.org/2000/svg" width={20} height={19} viewBox="0 0 20 19" fill="none">
-                                            <path d="M3.66634 9.5L16.333 9.5M16.333 9.5L11.583 14.25M16.333 9.5L11.583 4.75" stroke="white" strokeWidth="1.58333" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="tariffs__card scroll">
-                                <div className="tariffs__card-main">
-                                    <div className="tariffs__card-head">
-                                        <p className="tariffs__card-name">Site-128</p>
-                                        <p className="tariffs__card-desc">Идеальное решение для размещения лендинга или
-                                            сайта-визитки</p>
-                                    </div>
-                                    <ul className="tariffs__card-list">
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 базы данных</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">1 пользователь БД</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">1 пользователь FTP</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 веб-домена</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 домена</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">16 ГБ NVMe</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 почтовых домена</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="tariffs__card-bottom">
-                                    <div className="tariffs__card-price">
-                                        <span className="tariffs__card-price-value">179.90 ₽</span> /мес
-                                    </div>
-                                    <a href="#" className="tariffs__card-btn btn-grad">
-                                        Заказать
-                                        <svg xmlns="http://www.w3.org/2000/svg" width={20} height={19} viewBox="0 0 20 19" fill="none">
-                                            <path d="M3.66634 9.5L16.333 9.5M16.333 9.5L11.583 14.25M16.333 9.5L11.583 4.75" stroke="white" strokeWidth="1.58333" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="tariffs__card scroll">
-                                <div className="tariffs__card-main">
-                                    <div className="tariffs__card-head">
-                                        <p className="tariffs__card-name">Site-128</p>
-                                        <p className="tariffs__card-desc">Идеальное решение для размещения лендинга или
-                                            сайта-визитки</p>
-                                    </div>
-                                    <ul className="tariffs__card-list">
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 базы данных</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">1 пользователь БД</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">1 пользователь FTP</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 веб-домена</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 домена</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">16 ГБ NVMe</span>
-                                        </li>
-                                        <li className="tariffs__card-item">
-                                            <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 почтовых домена</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="tariffs__card-bottom">
-                                    <div className="tariffs__card-price">
-                                        <span className="tariffs__card-price-value">179.90 ₽</span> /мес
-                                    </div>
-                                    <a href="#" className="tariffs__card-btn btn-grad">
-                                        Заказать
-                                        <svg xmlns="http://www.w3.org/2000/svg" width={20} height={19} viewBox="0 0 20 19" fill="none">
-                                            <path d="M3.66634 9.5L16.333 9.5M16.333 9.5L11.583 14.25M16.333 9.5L11.583 4.75" stroke="white" strokeWidth="1.58333" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="tariffs__card scroll tariffs__card-limitless">
-                                <div className="tariffs__card-main">
-                                    <div className="tariffs__card-head">
-                                        <p className="tariffs__card-name">
+                                        <p className='tariffs__card-name'>{x.name == 'Limitless' ? (
+                                            <>
                                             <span className="tariffs__card-name-limitless">Limitless</span>
                                             <span className="tariffs__card-name-limitless-sp"> ∞</span>
-                                        </p>
+                                            </>
+                                        ) : `${x.name}`}</p>
                                         <p className="tariffs__card-desc">Идеальное решение для размещения лендинга или
                                             сайта-визитки</p>
                                     </div>
                                     <ul className="tariffs__card-list">
                                         <li className="tariffs__card-item">
                                             <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 базы данных</span>
+                                            <span className="tariffs__card-item-text">{x.limit_db} базы данных</span>
                                         </li>
                                         <li className="tariffs__card-item">
                                             <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">1 пользователь БД</span>
+                                            <span className="tariffs__card-item-text">{x.limit_db_users} пользователь БД</span>
                                         </li>
                                         <li className="tariffs__card-item">
                                             <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">1 пользователь FTP</span>
+                                            <span className="tariffs__card-item-text">{x.limit_ftp_users} пользователь FTP</span>
                                         </li>
                                         <li className="tariffs__card-item">
                                             <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 веб-домена</span>
+                                            <span className="tariffs__card-item-text">{x.limit_webdomains} веб-домена</span>
                                         </li>
                                         <li className="tariffs__card-item">
                                             <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 домена</span>
+                                            <span className="tariffs__card-item-text">{x.limit_domains} домена</span>
                                         </li>
                                         <li className="tariffs__card-item">
                                             <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">16 ГБ NVMe</span>
+                                            <span className="tariffs__card-item-text">{typeof x.limit_quota === "number" ? x.limit_quota / 1024 : x.limit_quota} ГБ NVMe</span>
                                         </li>
                                         <li className="tariffs__card-item">
                                             <img src="img/tariffs/gg_check.svg" alt="check" className="tariffs__card-item-img" />
-                                            <span className="tariffs__card-item-text">2 почтовых домена</span>
+                                            <span className="tariffs__card-item-text">{x.limit_emaildomains} почтовых домена</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div className="tariffs__card-bottom">
                                     <div className="tariffs__card-price">
-                                        <span className="tariffs__card-price-value">179.90 ₽</span> /мес
+                                        <span className="tariffs__card-price-value">{(x.cost).toFixed(2)} ₽</span> /мес
                                     </div>
-                                    <a href="#" className="tariffs__card-btn btn-grad">
+                                    <a href="https://my.msk.host" className="tariffs__card-btn btn-grad">
                                         Заказать
                                         <svg xmlns="http://www.w3.org/2000/svg" width={20} height={19} viewBox="0 0 20 19" fill="none">
                                             <path d="M3.66634 9.5L16.333 9.5M16.333 9.5L11.583 14.25M16.333 9.5L11.583 4.75" stroke="white" strokeWidth="1.58333" strokeLinecap="round" strokeLinejoin="round" />
@@ -426,6 +235,7 @@ export function WebHostingPage() {
                                     </a>
                                 </div>
                             </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -466,42 +276,6 @@ export function WebHostingPage() {
                                     <dt className="host-solution__card-name">Телеграм боты</dt>
                                     <dd className="host-solution__card-desc">
                                         Боты для автоматизации бизнеса или рутинных задач
-                                    </dd>
-                                </dl>
-                            </div>
-                            <div className="host-solution__card scroll">
-                                <img src="img/host-solution/4.svg" alt="img" className="host-solution__card-icon" />
-                                <dl className="host-solution__card-list">
-                                    <dt className="host-solution__card-name">Тестирование проектов</dt>
-                                    <dd className="host-solution__card-desc">
-                                        Проверка программного кода или демонстрации клиентам
-                                    </dd>
-                                </dl>
-                            </div>
-                            <div className="host-solution__card scroll">
-                                <img src="img/host-solution/4.svg" alt="img" className="host-solution__card-icon" />
-                                <dl className="host-solution__card-list">
-                                    <dt className="host-solution__card-name">Тестирование проектов</dt>
-                                    <dd className="host-solution__card-desc">
-                                        Проверка программного кода или демонстрации клиентам
-                                    </dd>
-                                </dl>
-                            </div>
-                            <div className="host-solution__card scroll">
-                                <img src="img/host-solution/4.svg" alt="img" className="host-solution__card-icon" />
-                                <dl className="host-solution__card-list">
-                                    <dt className="host-solution__card-name">Тестирование проектов</dt>
-                                    <dd className="host-solution__card-desc">
-                                        Проверка программного кода или демонстрации клиентам
-                                    </dd>
-                                </dl>
-                            </div>
-                            <div className="host-solution__card scroll">
-                                <img src="img/host-solution/4.svg" alt="img" className="host-solution__card-icon" />
-                                <dl className="host-solution__card-list">
-                                    <dt className="host-solution__card-name">Тестирование проектов</dt>
-                                    <dd className="host-solution__card-desc">
-                                        Проверка программного кода или демонстрации клиентам
                                     </dd>
                                 </dl>
                             </div>
@@ -590,7 +364,7 @@ export function WebHostingPage() {
                                 <div className="statistics__card scroll">
                                     <dl className="statistics__card-list">
                                         <dt className="statistics__card-name">
-                                            03<span className="statistics__card-name-sp">:</span>57
+                                            00<span className="statistics__card-name-sp">:</span>37
                                         </dt>
                                         <dd className="statistics__card-desc">От покупки до запуска</dd>
                                     </dl>
@@ -606,154 +380,7 @@ export function WebHostingPage() {
                     </div>
                 </div>
             </section>
-            <section className="page__faq" id="faq">
-                <div className="faq__container container">
-                    <div className="faq__inner">
-                        <div className="faq__head scroll">
-                            <div className="faq__name">
-                                <span className="faq__name-sp">
-                                    F.A.Q.
-                                </span>
-                            </div>
-                            <h2 className="faq__title main-title">Ответы на частозадаваемые вопросы</h2>
-                            <p className="faq__subtitle">
-                                Исчерпывающие ответы на большинство интересующих Вас вопросов.
-                                Не нашли ответ на Ваш вопрос? - Свяжитесь с нами!
-                            </p>
-                        </div>
-                        <div className="faq__accordions">
-                            <div className="faq__accordion scroll">
-                                <div className="faq__accordion-head">
-                                    <p className="faq__accordion-name">
-                                        Есть ли оверселл на тарифах виртуальных серверов?
-                                    </p>
-                                    <svg className="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M11.0534 17.5432L3.51078 10.0006L5.39611 8.11523L11.9961 14.7152L18.5961 8.11523L20.4814 10.0006L12.9388 17.5432C12.6887 17.7932 12.3497 17.9336 11.9961 17.9336C11.6426 17.9336 11.3035 17.7932 11.0534 17.5432Z" fill="#333333" />
-                                    </svg>
-                                </div>
-                                <div className="faq__accordion-contetnt">
-                                    <div className="faq__accordion-body">
-                                        <p className="faq__accordion-desc">
-                                            На всех тарифах линейки Dedicated предоставляются гарантированно выделенные
-                                            ресурсы, на линейке Shared гарантированно предоставляется RAM и объем
-                                            накопителя, ядра — общие.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="faq__accordion scroll">
-                                <div className="faq__accordion-head">
-                                    <p className="faq__accordion-name">
-                                        Есть ли оверселл на тарифах виртуальных серверов?
-                                    </p>
-                                    <svg className="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M11.0534 17.5432L3.51078 10.0006L5.39611 8.11523L11.9961 14.7152L18.5961 8.11523L20.4814 10.0006L12.9388 17.5432C12.6887 17.7932 12.3497 17.9336 11.9961 17.9336C11.6426 17.9336 11.3035 17.7932 11.0534 17.5432Z" fill="#333333" />
-                                    </svg>
-                                </div>
-                                <div className="faq__accordion-contetnt">
-                                    <div className="faq__accordion-body">
-                                        <p className="faq__accordion-desc">
-                                            На всех тарифах линейки Dedicated предоставляются гарантированно выделенные
-                                            ресурсы, на линейке Shared гарантированно предоставляется RAM и объем
-                                            накопителя, ядра — общие.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="faq__accordion scroll">
-                                <div className="faq__accordion-head">
-                                    <p className="faq__accordion-name">
-                                        Есть ли оверселл на тарифах виртуальных серверов?
-                                    </p>
-                                    <svg className="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M11.0534 17.5432L3.51078 10.0006L5.39611 8.11523L11.9961 14.7152L18.5961 8.11523L20.4814 10.0006L12.9388 17.5432C12.6887 17.7932 12.3497 17.9336 11.9961 17.9336C11.6426 17.9336 11.3035 17.7932 11.0534 17.5432Z" fill="#333333" />
-                                    </svg>
-                                </div>
-                                <div className="faq__accordion-contetnt">
-                                    <div className="faq__accordion-body">
-                                        <p className="faq__accordion-desc">
-                                            На всех тарифах линейки Dedicated предоставляются гарантированно выделенные
-                                            ресурсы, на линейке Shared гарантированно предоставляется RAM и объем
-                                            накопителя, ядра — общие.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="faq__accordion scroll">
-                                <div className="faq__accordion-head">
-                                    <p className="faq__accordion-name">
-                                        Есть ли оверселл на тарифах виртуальных серверов?
-                                    </p>
-                                    <svg className="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M11.0534 17.5432L3.51078 10.0006L5.39611 8.11523L11.9961 14.7152L18.5961 8.11523L20.4814 10.0006L12.9388 17.5432C12.6887 17.7932 12.3497 17.9336 11.9961 17.9336C11.6426 17.9336 11.3035 17.7932 11.0534 17.5432Z" fill="#333333" />
-                                    </svg>
-                                </div>
-                                <div className="faq__accordion-contetnt">
-                                    <div className="faq__accordion-body">
-                                        <p className="faq__accordion-desc">
-                                            На всех тарифах линейки Dedicated предоставляются гарантированно выделенные
-                                            ресурсы, на линейке Shared гарантированно предоставляется RAM и объем
-                                            накопителя, ядра — общие.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="faq__accordion scroll">
-                                <div className="faq__accordion-head">
-                                    <p className="faq__accordion-name">
-                                        Есть ли оверселл на тарифах виртуальных серверов?
-                                    </p>
-                                    <svg className="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M11.0534 17.5432L3.51078 10.0006L5.39611 8.11523L11.9961 14.7152L18.5961 8.11523L20.4814 10.0006L12.9388 17.5432C12.6887 17.7932 12.3497 17.9336 11.9961 17.9336C11.6426 17.9336 11.3035 17.7932 11.0534 17.5432Z" fill="#333333" />
-                                    </svg>
-                                </div>
-                                <div className="faq__accordion-contetnt">
-                                    <div className="faq__accordion-body">
-                                        <p className="faq__accordion-desc">
-                                            На всех тарифах линейки Dedicated предоставляются гарантированно выделенные
-                                            ресурсы, на линейке Shared гарантированно предоставляется RAM и объем
-                                            накопителя, ядра — общие.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="faq__accordion scroll">
-                                <div className="faq__accordion-head">
-                                    <p className="faq__accordion-name">
-                                        Есть ли оверселл на тарифах виртуальных серверов?
-                                    </p>
-                                    <svg className="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M11.0534 17.5432L3.51078 10.0006L5.39611 8.11523L11.9961 14.7152L18.5961 8.11523L20.4814 10.0006L12.9388 17.5432C12.6887 17.7932 12.3497 17.9336 11.9961 17.9336C11.6426 17.9336 11.3035 17.7932 11.0534 17.5432Z" fill="#333333" />
-                                    </svg>
-                                </div>
-                                <div className="faq__accordion-contetnt">
-                                    <div className="faq__accordion-body">
-                                        <p className="faq__accordion-desc">
-                                            На всех тарифах линейки Dedicated предоставляются гарантированно выделенные
-                                            ресурсы, на линейке Shared гарантированно предоставляется RAM и объем
-                                            накопителя, ядра — общие.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="faq__banner scroll">
-                            <img src="img/faq/bg.webp" alt="img" className="faq__banner-bg" />
-                            <h2 className="faq__banner-title main-title main-title-white">
-                                Ответим на Ваши вопросы
-                                в любое время суток
-                            </h2>
-                            <p className="faq__banner-subtitle">Наша поддержка работает круглосуточно</p>
-                            <a href="#" className="faq__banner-link">
-                                Написать нам
-                                <svg xmlns="http://www.w3.org/2000/svg" width={19} height={19} viewBox="0 0 19 19" fill="none">
-                                    <path d="M3.16634 9.5L15.833 9.5M15.833 9.5L11.083 14.25M15.833 9.5L11.083 4.75" stroke="#873BFF" strokeWidth="1.58333" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <SectionFaq />
         </BasePage>
     )
 }

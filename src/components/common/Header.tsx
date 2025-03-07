@@ -5,9 +5,9 @@ export function Header({ customClassName, headerLogo, toggleBurgerMenu }) {
         <header className={"header " + (customClassName ?? "")}>
             <div className="header__container container">
                 <nav className="header__inner">
-                <a href="index.html" className="header__logo">
+                <Link to="/" className="header__logo">
                     {headerLogo}
-                </a>
+                </Link>
                 <ul className="header__list">
                     <li className="header__item header__item--active">
                     <div className="header__item-name">
@@ -69,7 +69,7 @@ export function Header({ customClassName, headerLogo, toggleBurgerMenu }) {
                     <a href="#reviews" className="header__item-link">Мнение пользователей</a>
                     </li>
                 </ul>
-                <a href="#" className="header__link">
+                <a href="https://my.msk.host" className="header__link">
                     Личный кабинет
                 </a>
                 <button onClick={toggleBurgerMenu} className="burger-btn" type="button">

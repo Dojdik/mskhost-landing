@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
+
 export function Footer() {
     return (
         <footer className="footer footer-main">
             <div className="footer__container container">
                 <div className="footer__inner">
                     <div className="footer__top">
-                        <a href="index.html" className="footer__logo">
+                        <Link to="/" className="footer__logo">
                             <svg xmlns="http://www.w3.org/2000/svg" width={146} height={40} viewBox="0 0 146 40" fill="none">
                                 <g clipPath="url(#clip0_12_527)">
                                     <path d="M27.0296 28.9242L17.1285 38.7674C16.3348 39.5565 15.2582 39.9999 14.1357 39.9999C13.0132 39.9999 11.9366 39.5565 11.1428 38.7674L1.24185 28.9242C0.848203 28.5337 0.535885 28.07 0.322787 27.5595C0.109689 27.0489 0 26.5015 0 25.9487C0 25.396 0.109689 24.8486 0.322787 24.3381C0.535885 23.8275 0.848203 23.3637 1.24185 22.9734L2.31068 21.9107L4.34168 19.8916L11.3597 26.8687C12.1535 27.6577 13.2301 28.1011 14.3525 28.1011C15.4751 28.1011 16.5517 27.6577 17.3454 26.8687L24.1467 20.1072L27.0296 22.9757C27.423 23.3662 27.7353 23.83 27.9483 24.3405C28.1613 24.8511 28.271 25.3984 28.271 25.9511C28.271 26.5039 28.1613 27.0512 27.9483 27.5617C27.7353 28.0724 27.423 28.5361 27.0296 28.9266V28.9242Z" fill="#873BFF" />
@@ -25,15 +27,15 @@ export function Footer() {
                                     </clipPath>
                                 </defs>
                             </svg>
-                        </a>
+                        </Link>
                         <div className="footer__top-main">
                             <p className="footer__top-text">
-                                Однажды... и на всегда... с MskHost
+                                Однажды… и навсегда… с MskHost
                                 <img src="img/footer/img.png" alt="img" className="footer__top-img" />
                             </p>
                             <div className="footer__top-btns">
-                                <a href="#" className="footer__top-link btn-main">Личный кабинет</a>
-                                <a href="#" className="footer__top-link btn-grey">Хостинг решения</a>
+                                <a href="https://my.msk.host" className="footer__top-link btn-main">Личный кабинет</a>
+                                <Link to="/web-hosting" className="footer__top-link btn-grey">Хостинг решения</Link>
                             </div>
                         </div>
                     </div>
@@ -50,19 +52,19 @@ export function Footer() {
                                 <p className="footer__column-name">Навигация</p>
                                 <ul className="footer__column-list">
                                     <li className="footer__column-item">
-                                        <a href="#" className="footer__column-item-link">Главная</a>
+                                        <Link to="/" className="footer__column-item-link">Главная</Link>
                                     </li>
                                     <li className="footer__column-item">
-                                        <a href="#" className="footer__column-item-link">Мощные VPS</a>
+                                        <Link to="/vds" className="footer__column-item-link">Мощные VPS</Link>
                                     </li>
                                     <li className="footer__column-item">
-                                        <a href="#" className="footer__column-item-link">Веб-хостинг</a>
+                                        <Link to="/web-hosting" className="footer__column-item-link">Веб-хостинг</Link>
                                     </li>
                                     <li className="footer__column-item">
-                                        <a href="#" className="footer__column-item-link">Личный кабинет</a>
+                                        <a href="https://my.msk.host" className="footer__column-item-link">Личный кабинет</a>
                                     </li>
                                     <li className="footer__column-item">
-                                        <a href="#" className="footer__column-item-link">Поддержка</a>
+                                        <a href="https://t.me/mskhost_sup" className="footer__column-item-link">Поддержка</a>
                                     </li>
                                 </ul>
                             </div>
@@ -70,23 +72,23 @@ export function Footer() {
                                 <p className="footer__column-name">О MskHost</p>
                                 <ul className="footer__column-list">
                                     <li className="footer__column-item">
-                                        <a href="#" className="footer__column-item-link">Телеграм канал</a>
+                                        <a href="https://t.me/mskhost" className="footer__column-item-link">Телеграм канал</a>
                                     </li>
-                                    <li className="footer__column-item">
+                                    {/* <li className="footer__column-item">
                                         <a href="#" className="footer__column-item-link">Мы на VC.RU</a>
+                                    </li> */}
+                                    <li className="footer__column-item">
+                                        <a href="https://www.youtube.com/@mskhostit1599" className="footer__column-item-link">Youtube канал</a>
                                     </li>
                                     <li className="footer__column-item">
-                                        <a href="#" className="footer__column-item-link">Youtube канал</a>
+                                        <a href="https://vk.com/mskhost" className="footer__column-item-link">Группа ВК</a>
                                     </li>
-                                    <li className="footer__column-item">
-                                        <a href="#" className="footer__column-item-link">Группа ВК</a>
-                                    </li>
-                                    <li className="footer__column-item">
+                                    {/* <li className="footer__column-item">
                                         <a href="#" className="footer__column-item-link">Мы на Хабр</a>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
-                            <div className="footer__column">
+                            {/* <div className="footer__column">
                                 <p className="footer__column-name">Документы</p>
                                 <ul className="footer__column-list">
                                     <li className="footer__column-item">
@@ -99,7 +101,7 @@ export function Footer() {
                                         <a href="#" className="footer__column-item-link">Агентский договор</a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="footer__bottom">

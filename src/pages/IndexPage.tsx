@@ -1,7 +1,26 @@
 import { BasePage } from "@/components/common/BasePage";
 import { SectionFaq } from "@/components/section/SectionFaq";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export function IndexPage() {
+
+    const [currentTime, setCurrentTime] = useState(getFormattedTime());
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentTime(getFormattedTime());
+      }, 1000);
+  
+      return () => clearInterval(interval);
+    }, []);
+  
+    function getFormattedTime() {
+      const now = new Date();
+      const days = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
+      const time = now.toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" });
+      return `${time}, ${days[now.getDay()]}`;
+    }
 
     const headerLogo = (
         <svg xmlns="http://www.w3.org/2000/svg" width={146} height={40} viewBox="0 0 146 40" fill="none">
@@ -20,7 +39,7 @@ export function IndexPage() {
             </g>
             <defs>
                 <clipPath id="clip0_1_67">
-                <rect width={146} height={40} fill="white" />
+                    <rect width={146} height={40} fill="white" />
                 </clipPath>
             </defs>
         </svg>
@@ -31,455 +50,423 @@ export function IndexPage() {
             <section className="page__preview">
                 <img src="img/bg.webp" alt="bg" className="preview-bg" />
                 <div className="preview__container container">
-                <div className="preview__inner">
-                    <div className="preview__head scroll">
-                    <h1 className="preview__title">
-                        Мощные серверы и домены— всё для вашего проекта
-                    </h1>
-                    <p className="preview__subtitle">
-                        Надёжные виртуальные и выделенные серверы с высокой производительностью. Скорость,
-                        безопасность и удобное управление в одном решении.
-                    </p>
-                    <div className="preview__btns">
-                        <a href="#" className="preview__link preview__link-white">Личный кабинет</a>
-                        <a href="#" className="preview__link preview__link-solutions">Наши решения</a>
+                    <div className="preview__inner">
+                        <div className="preview__head scroll">
+                            <h1 className="preview__title">
+                                Мощные серверы и домены — всё для вашего проекта
+                            </h1>
+                            <p className="preview__subtitle">
+                                Надёжные виртуальные и выделенные серверы с высокой производительностью. Скорость,
+                                безопасность и удобное управление в одном решении.
+                            </p>
+                            <div className="preview__btns">
+                                <Link to="https://my.msk.host" className="preview__link preview__link-white">Личный кабинет</Link>
+                                <Link to="/vds" className="preview__link preview__link-solutions">Наши решения</Link>
+                            </div>
+                        </div>
+                        <div className="preview__cards">
+                            <div className="preview__card preview__card-1 scroll">
+                                <img src="img/preview/1.svg" alt="img" className="preview__card-img" />
+                                <dl className="preview__card-list">
+                                    <dt className="preview__card-name">15,000+</dt>
+                                    <dd className="preview__card-desc">Активных серверов</dd>
+                                </dl>
+                            </div>
+                            <div className="preview__card preview-card-bg scroll">
+                                <img src="img/preview/bg-card.svg" alt="bg" className="preview__card-bg" />
+                                <p className="preview__card-title">Масленичные скидки!</p>
+                                <p className="preview__card-subtitle">
+                                    Что может быть лучше вкусных блинов на завтрак понедельника? Только 50% скидка на
+                                    все сервера и хостинги!
+                                    Успевай, пока горячие!
+                                </p>
+                                <span className="preview__card-time">
+                                    Акция действует до 01.03.2025 23:59
+                                </span>
+                            </div>
+                            <div className="preview__card preview__card-3 scroll">
+                                <img src="img/preview/2.svg" alt="img" className="preview__card-img" />
+                                <dl className="preview__card-list">
+                                    <dt className="preview__card-name preview__card-name-time">{currentTime}</dt>
+                                    <dd className="preview__card-desc">Текущее время</dd>
+                                </dl>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                    <div className="preview__cards">
-                    <div className="preview__card preview__card-1 scroll">
-                        <img src="img/preview/1.svg" alt="img" className="preview__card-img" />
-                        <dl className="preview__card-list">
-                        <dt className="preview__card-name">15,000+</dt>
-                        <dd className="preview__card-desc">Активных серверов</dd>
-                        </dl>
-                    </div>
-                    <div className="preview__card preview-card-bg scroll">
-                        <img src="img/preview/bg-card.svg" alt="bg" className="preview__card-bg" />
-                        <p className="preview__card-title">Масленичные скидки!</p>
-                        <p className="preview__card-subtitle">
-                        Что может быть лучше вкусных блинов на завтрак понедельника? Только 50% скидка на
-                        все сервера и хостинги!
-                        Успевай, пока горячие!
-                        </p>
-                        <span className="preview__card-time">
-                        Акция действует до 01.03.2025 23:59
-                        </span>
-                    </div>
-                    <div className="preview__card preview__card-3 scroll">
-                        <img src="img/preview/2.svg" alt="img" className="preview__card-img" />
-                        <dl className="preview__card-list">
-                        <dt className="preview__card-name preview__card-name-time">23:26, вс</dt>
-                        <dd className="preview__card-desc">Текущее время</dd>
-                        </dl>
-                    </div>
-                    </div>
-                </div>
                 </div>
             </section>
             <section className="page__advantages" id="advantages">
                 <div className="advantages__container container">
-                <div className="advantages__inner">
-                    <div className="advantages__head scroll">
-                    <div className="advantages__name">
-                        <span className="advantages__name-sp">Решения прямиком из сердца интернета</span>
+                    <div className="advantages__inner">
+                        <div className="advantages__head scroll">
+                            <div className="advantages__name">
+                                <span className="advantages__name-sp">Решения прямиком из сердца интернета</span>
+                            </div>
+                            <h2 className="advantages__title main-title">
+                                На голову выше и на шаг впереди
+                                привычных хостинг-сервисов
+                            </h2>
+                        </div>
+                        <div className="advantages__columns">
+                            <div className="advantages__column advantages__column-1">
+                                <div className="advantages__card scroll advantages__card-1">
+                                    <img src="img/advantages/elem-1.svg" alt="img" className="advantages__card-1-img" />
+                                    <img src="img/advantages/elem-2.png" alt="img" className="advantages__card-1-elem advantages__card-1-elem-1" />
+                                    <img src="img/advantages/elem-3.png" alt="img" className="advantages__card-1-elem advantages__card-1-elem-2" />
+                                    <p className="advantages__card-1-desc">
+                                        <span className="advantages__card-1-sp">
+                                            Хостинг-сервис,
+                                        </span>
+                                        которому доверяют
+                                        <span className="advantages__card-1-sp">
+                                            уже более 5 лет
+                                        </span>
+                                    </p>
+                                </div>
+                                <div className="advantages__card scroll advantages__card-2">
+                                    <img src="img/advantages/img.png" alt="img" className="advantages__card-2-img" />
+                                </div>
+                                <div className="advantages__card scroll advantages__card-3">
+                                    <p className="advantages__card-3-text">
+                                        Широкий выбор
+                                        образов систем
+                                    </p>
+                                    <img src="img/advantages/bg-4.png" alt="img" className="advantages__card-3-img" />
+                                </div>
+                            </div>
+                            <div className="advantages__column advantages__column-2">
+                                <img src="img/advantages/center.svg" alt="img" className="advantages__column-center scroll" />
+                                <div className="advantages__card scroll advantages__card-4">
+                                    <img src="img/advantages/bg-1.png" alt="img" className="advantages__card-4-img" />
+                                    <p className="advantages__card-4-name">
+                                        <span className="advantages__card-4-name-sp">Высший уровень сервиса</span>
+                                        серверных решений
+                                    </p>
+                                </div>
+                                <div className="advantages__column-row">
+                                    <div className="advantages__card scroll advantages__card-5-6">
+                                        <img src="img/advantages/ic-1.svg" alt="img" className="advantages__card-5-6-img" />
+                                        <img src="img/advantages/bg-5.png" alt="bg" className="advantages__card-5-6-bg" />
+                                        <img src="img/advantages/img-2.png" alt="img" className="advantages__card-5-6-elem" />
+                                        <dl className="advantages__card-5-6-list">
+                                            <dt className="advantages__card-5-6-name">
+                                                Флагманские конфигурации
+                                            </dt>
+                                            <dd className="advantages__card-5-6-desc">
+                                                Регулярно обновляем компоненты до самых современных моделей
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div className="advantages__card scroll advantages__card-right advantages__card-5-6">
+                                        <img src="img/advantages/ic-2.svg" alt="img" className="advantages__card-5-6-img" />
+                                        <img src="img/advantages/bg-6.png" alt="bg" className="advantages__card-5-6-bg" />
+                                        <img src="img/advantages/img-3.png" alt="img" className="advantages__card-5-6-elem" />
+                                        <dl className="advantages__card-5-6-list">
+                                            <dt className="advantages__card-5-6-name">
+                                                Собственная <br />
+                                                DDoS-защита
+                                            </dt>
+                                            <dd className="advantages__card-5-6-desc">
+                                                Фильтруем все самые популярные виды L3-L7 DDoS-атак
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="advantages__column advantages__column-3">
+                                <div className="advantages__card scroll advantages__card-7-8">
+                                    <img src="img/advantages/bg-2.png" alt="img" className="advantages__card-7-8-bg" />
+                                    <dl className="advantages__card-7-8-list">
+                                        <dt className="advantages__card-7-8-name">3.5М+</dt>
+                                        <dd className="advantages__card-7-8-desc">Объем хранилища (ГБ)</dd>
+                                    </dl>
+                                </div>
+                                <div className="advantages__card scroll advantages__card-7-8">
+                                    <img src="img/advantages/bg-3.png" alt="img" className="advantages__card-7-8-bg" />
+                                    <dl className="advantages__card-7-8-list">
+                                        <dt className="advantages__card-7-8-name">99.8%</dt>
+                                        <dd className="advantages__card-7-8-desc">средний uptime</dd>
+                                    </dl>
+                                </div>
+                                <div className="advantages__card scroll advantages__card-9">
+                                    <img src="img/advantages/bg-7.png" alt="bg" className="advantages__card-9-bg" />
+                                    <img src="img/advantages/img-4.png" className="advantages__card-9-elem" alt="img" />
+                                    <dl className="advantages__card-9-list">
+                                        <dt className="advantages__card-9-name">
+                                            Сервера в сердце мирового интернета
+                                        </dt>
+                                        <dd className="advantages__card-9-desc">
+                                            Выбираем исключительно самые надежные и мощные дата-центры, расположенные в
+                                            центре Европы
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h2 className="advantages__title main-title">
-                        На голову выше и на шаг впереди
-                        привычных хостинг-сервисов
-                    </h2>
-                    </div>
-                    <div className="advantages__columns">
-                    <div className="advantages__column advantages__column-1">
-                        <div className="advantages__card scroll advantages__card-1">
-                        <img src="img/advantages/elem-1.svg" alt="img" className="advantages__card-1-img" />
-                        <img src="img/advantages/elem-2.png" alt="img" className="advantages__card-1-elem advantages__card-1-elem-1" />
-                        <img src="img/advantages/elem-3.png" alt="img" className="advantages__card-1-elem advantages__card-1-elem-2" />
-                        <p className="advantages__card-1-desc">
-                            <span className="advantages__card-1-sp">
-                            Хостинг-сервис,
-                            </span>
-                            которому доверяют
-                            <span className="advantages__card-1-sp">
-                            уже более 5 лет
-                            </span>
-                        </p>
-                        </div>
-                        <div className="advantages__card scroll advantages__card-2">
-                        <img src="img/advantages/img.png" alt="img" className="advantages__card-2-img" />
-                        </div>
-                        <div className="advantages__card scroll advantages__card-3">
-                        <p className="advantages__card-3-text">
-                            Широкий выбор
-                            образов систем
-                        </p>
-                        <img src="img/advantages/bg-4.png" alt="img" className="advantages__card-3-img" />
-                        </div>
-                    </div>
-                    <div className="advantages__column advantages__column-2">
-                        <img src="img/advantages/center.svg" alt="img" className="advantages__column-center scroll" />
-                        <div className="advantages__card scroll advantages__card-4">
-                        <img src="img/advantages/bg-1.png" alt="img" className="advantages__card-4-img" />
-                        <p className="advantages__card-4-name">
-                            <span className="advantages__card-4-name-sp">Высший уровень сервиса</span>
-                            серверных решений
-                        </p>
-                        </div>
-                        <div className="advantages__column-row">
-                        <div className="advantages__card scroll advantages__card-5-6">
-                            <img src="img/advantages/ic-1.svg" alt="img" className="advantages__card-5-6-img" />
-                            <img src="img/advantages/bg-5.png" alt="bg" className="advantages__card-5-6-bg" />
-                            <img src="img/advantages/img-2.png" alt="img" className="advantages__card-5-6-elem" />
-                            <dl className="advantages__card-5-6-list">
-                            <dt className="advantages__card-5-6-name">
-                                Флагманские конфигурации
-                            </dt>
-                            <dd className="advantages__card-5-6-desc">
-                                Регулярно обновляем компоненты до самых современных моделей
-                            </dd>
-                            </dl>
-                        </div>
-                        <div className="advantages__card scroll advantages__card-right advantages__card-5-6">
-                            <img src="img/advantages/ic-2.svg" alt="img" className="advantages__card-5-6-img" />
-                            <img src="img/advantages/bg-6.png" alt="bg" className="advantages__card-5-6-bg" />
-                            <img src="img/advantages/img-3.png" alt="img" className="advantages__card-5-6-elem" />
-                            <dl className="advantages__card-5-6-list">
-                            <dt className="advantages__card-5-6-name">
-                                Собственная <br />
-                                DDoS-защита
-                            </dt>
-                            <dd className="advantages__card-5-6-desc">
-                                Фильтруем все самые популярные виды L3-L7 DDoS-атак
-                            </dd>
-                            </dl>
-                        </div>
-                        </div>
-                    </div>
-                    <div className="advantages__column advantages__column-3">
-                        <div className="advantages__card scroll advantages__card-7-8">
-                        <img src="img/advantages/bg-2.png" alt="img" className="advantages__card-7-8-bg" />
-                        <dl className="advantages__card-7-8-list">
-                            <dt className="advantages__card-7-8-name">3.5М+</dt>
-                            <dd className="advantages__card-7-8-desc">Объем хранилища (ГБ)</dd>
-                        </dl>
-                        </div>
-                        <div className="advantages__card scroll advantages__card-7-8">
-                        <img src="img/advantages/bg-3.png" alt="img" className="advantages__card-7-8-bg" />
-                        <dl className="advantages__card-7-8-list">
-                            <dt className="advantages__card-7-8-name">99.8%</dt>
-                            <dd className="advantages__card-7-8-desc">средний uptime</dd>
-                        </dl>
-                        </div>
-                        <div className="advantages__card scroll advantages__card-9">
-                        <img src="img/advantages/bg-7.png" alt="bg" className="advantages__card-9-bg" />
-                        <img src="img/advantages/img-4.png" className="advantages__card-9-elem" alt="img" />
-                        <dl className="advantages__card-9-list">
-                            <dt className="advantages__card-9-name">
-                            Сервера в сердце мирового интернета
-                            </dt>
-                            <dd className="advantages__card-9-desc">
-                            Выбираем исключительно самые надежные и мощные дата-центры, расположенные в
-                            центре Европы
-                            </dd>
-                        </dl>
-                        </div>
-                    </div>
-                    </div>
-                </div>
                 </div>
             </section>
             <section className="page__solutions">
                 <img src="img/solutions/bg.webp" alt="bg" className="solutions-bg" />
                 <div className="solutions__container container">
-                <div className="solutions__inner">
-                    <div className="solutions__head scroll">
-                    <span className="solutions__name">Решения прямиком из сердца интернета</span>
-                    <h2 className="solutions__title main-title">Хостинг-решения без головной боли</h2>
-                    <p className="solutions__subtitle">Мощные серверы, продуманная инфраструктура и тарифы под любые
-                        задачи.
-                        Без ограничений, сложных настроек и танцев с бубном — бери и работай.</p>
+                    <div className="solutions__inner">
+                        <div className="solutions__head scroll">
+                            <span className="solutions__name">Решения прямиком из сердца интернета</span>
+                            <h2 className="solutions__title main-title">Хостинг-решения без головной боли</h2>
+                            <p className="solutions__subtitle">Мощные серверы, продуманная инфраструктура и тарифы под любые
+                                задачи.
+                                Без ограничений, сложных настроек и танцев с бубном — бери и работай.</p>
+                        </div>
+                        <div className="solutions__cards">
+                            <a href="#" className="solutions__card scroll">
+                                <dl className="solutions__card-list">
+                                    <dt className="solutions__card-name">Выделенные серверы</dt>
+                                    <dd className="solutions__card-desc">Полная свобода, максимум мощности <br /> без соседей.
+                                        Для серьезных проектов.</dd>
+                                </dl>
+                                <img src="img/solutions/1.svg" alt="img" className="solutions__card-img" />
+                            </a>
+                            <a href="#" className="solutions__card scroll">
+                                <dl className="solutions__card-list">
+                                    <dt className="solutions__card-name">Виртуальные серверы</dt>
+                                    <dd className="solutions__card-desc">Работают как часы. Настроены, защищены, и всегда в
+                                        боевой готовности.</dd>
+                                </dl>
+                                <img src="img/solutions/2.svg" alt="img" className="solutions__card-img" />
+                            </a>
+                            <a href="#" className="solutions__card scroll">
+                                <dl className="solutions__card-list">
+                                    <dt className="solutions__card-name">
+                                        Доменные имена
+                                        <span className="solutions__card-name-status">Скоро</span>
+                                    </dt>
+                                    <dd className="solutions__card-desc">Как проект назовешь - так он и поплывет. Быстрая
+                                        регистрация и приятные цены.</dd>
+                                </dl>
+                                <img src="img/solutions/3.svg" alt="img" className="solutions__card-img" />
+                            </a>
+                        </div>
                     </div>
-                    <div className="solutions__cards">
-                    <a href="#" className="solutions__card scroll">
-                        <dl className="solutions__card-list">
-                        <dt className="solutions__card-name">Выделенные серверы</dt>
-                        <dd className="solutions__card-desc">Полная свобода, максимум мощности <br /> без соседей.
-                            Для серьезных проектов.</dd>
-                        </dl>
-                        <img src="img/solutions/1.svg" alt="img" className="solutions__card-img" />
-                    </a>
-                    <a href="#" className="solutions__card scroll">
-                        <dl className="solutions__card-list">
-                        <dt className="solutions__card-name">Виртуальные серверы</dt>
-                        <dd className="solutions__card-desc">Работают как часы. Настроены, защищены, и всегда в
-                            боевой готовности.</dd>
-                        </dl>
-                        <img src="img/solutions/2.svg" alt="img" className="solutions__card-img" />
-                    </a>
-                    <a href="#" className="solutions__card scroll">
-                        <dl className="solutions__card-list">
-                        <dt className="solutions__card-name">
-                            Доменные имена
-                            <span className="solutions__card-name-status">Скоро</span>
-                        </dt>
-                        <dd className="solutions__card-desc">Как проект назовешь - так он и поплывет. Быстрая
-                            регистрация и приятные цены.</dd>
-                        </dl>
-                        <img src="img/solutions/3.svg" alt="img" className="solutions__card-img" />
-                    </a>
-                    </div>
-                </div>
                 </div>
             </section>
             <section className="page__info-banner marb-160">
                 <div className="info-banner__container container">
-                <div className="info-banner__inner">
-                    <div className="info-banner__img scroll">
-                    <img src="img/info-banner/2.webp" alt="img" className="info-banner__image" />
-                    </div>
-                    <div className="info-banner__content scroll">
-                    <div className="info-banner__name">
-                        <span className="info-banner__name-text">Надежное шифрование</span>
-                    </div>
-                    <h2 className="info-banner__title main-title">
-                        Ваша безопасность на высочайшем уровне
-                    </h2>
-                    <p className="info-banner__subtitle">
-                        Мы защищаем ваши данные от угроз и атак. Используем продвинутые методы безопасности,
-                        чтобы ваши проекты работали без сбоев.
-                    </p>
-                    <div className="info-banner__cards">
-                        <div className="info-banner__card">
-                        <img src="img/info-banner/3.svg" alt="img" className="info-banner__card-img" />
-                        <dl className="info-banner__card-list">
-                            <dt className="info-banner__card-name">SHA256 шифрование</dt>
-                            <dd className="info-banner__card-desc">
-                            Все данные начиная от паролей, заканчивая cookies шифруются
-                            в формате SHA256
-                            </dd>
-                        </dl>
+                    <div className="info-banner__inner">
+                        <div className="info-banner__img scroll">
+                            <img src="img/info-banner/2.webp" alt="img" className="info-banner__image" />
                         </div>
-                        <div className="info-banner__card">
-                        <img src="img/info-banner/4.svg" alt="img" className="info-banner__card-img" />
-                        <dl className="info-banner__card-list">
-                            <dt className="info-banner__card-name">Защита от L3-L7 атак</dt>
-                            <dd className="info-banner__card-desc">
-                            AntiDDoS защита от всех типов популярных атак (L3-L7), с real-time
-                            обновлением данных
-                            </dd>
-                        </dl>
+                        <div className="info-banner__content scroll">
+                            <div className="info-banner__name">
+                                <span className="info-banner__name-text">Надежное шифрование</span>
+                            </div>
+                            <h2 className="info-banner__title main-title">
+                                Ваша безопасность на высочайшем уровне
+                            </h2>
+                            <p className="info-banner__subtitle">
+                                Мы защищаем ваши данные от угроз и атак. Используем продвинутые методы безопасности,
+                                чтобы ваши проекты работали без сбоев.
+                            </p>
+                            <div className="info-banner__cards">
+                                <div className="info-banner__card">
+                                    <img src="img/info-banner/3.svg" alt="img" className="info-banner__card-img" />
+                                    <dl className="info-banner__card-list">
+                                        <dt className="info-banner__card-name">SHA256 шифрование</dt>
+                                        <dd className="info-banner__card-desc">
+                                            Все данные начиная от паролей, заканчивая cookies шифруются
+                                            в формате SHA256
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div className="info-banner__card">
+                                    <img src="img/info-banner/4.svg" alt="img" className="info-banner__card-img" />
+                                    <dl className="info-banner__card-list">
+                                        <dt className="info-banner__card-name">Защита от L3-L7 атак</dt>
+                                        <dd className="info-banner__card-desc">
+                                            AntiDDoS защита от всех типов популярных атак (L3-L7), с real-time
+                                            обновлением данных
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                </div>
                 </div>
             </section>
             <section className="page__info-banner marb-144">
                 <div className="info-banner__container container">
-                <div className="info-banner__inner">
-                    <div className="info-banner__content scroll">
-                    <div className="info-banner__name">
-                        <span className="info-banner__name-text">Топовые Ryzen EPYC и X9154</span>
-                    </div>
-                    <h2 className="info-banner__title main-title">
-                        Флагманские процессоры с мощнейшей начинкой
-                    </h2>
-                    <p className="info-banner__subtitle">
-                        Наши серверы оснащены современным оборудованием, что обеспечивает мгновенную реакцию,
-                        стабильную работу и максимальную отдачу ресурсов.
-                    </p>
-                    <div className="info-banner__cards">
-                        <div className="info-banner__card">
-                        <img src="img/info-banner/5.svg" alt="img" className="info-banner__card-img" />
-                        <dl className="info-banner__card-list">
-                            <dt className="info-banner__card-name">Свежие конфигурации</dt>
-                            <dd className="info-banner__card-desc">
-                            Наша команда всегда предлагает только современные компоненты, доступные на
-                            рынке
-                            </dd>
-                        </dl>
+                    <div className="info-banner__inner">
+                        <div className="info-banner__content scroll">
+                            <div className="info-banner__name">
+                                <span className="info-banner__name-text">Топовые Ryzen EPYC и X9154</span>
+                            </div>
+                            <h2 className="info-banner__title main-title">
+                                Флагманские процессоры с мощнейшей начинкой
+                            </h2>
+                            <p className="info-banner__subtitle">
+                                Наши серверы оснащены современным оборудованием, что обеспечивает мгновенную реакцию,
+                                стабильную работу и максимальную отдачу ресурсов.
+                            </p>
+                            <div className="info-banner__cards">
+                                <div className="info-banner__card">
+                                    <img src="img/info-banner/5.svg" alt="img" className="info-banner__card-img" />
+                                    <dl className="info-banner__card-list">
+                                        <dt className="info-banner__card-name">Свежие конфигурации</dt>
+                                        <dd className="info-banner__card-desc">
+                                            Наша команда всегда предлагает только современные компоненты, доступные на
+                                            рынке
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div className="info-banner__card">
+                                    <img src="img/info-banner/6.svg" alt="img" className="info-banner__card-img" />
+                                    <dl className="info-banner__card-list">
+                                        <dt className="info-banner__card-name">1000+ Mbit/s сеть</dt>
+                                        <dd className="info-banner__card-desc">
+                                            Все стойки подключены по оптике, что позволяет достигать скорости свыше 1000
+                                            мбит/с
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
                         </div>
-                        <div className="info-banner__card">
-                        <img src="img/info-banner/6.svg" alt="img" className="info-banner__card-img" />
-                        <dl className="info-banner__card-list">
-                            <dt className="info-banner__card-name">1000+ Mbit/s сеть</dt>
-                            <dd className="info-banner__card-desc">
-                            Все стойки подключены по оптике, что позволяет достигать скорости свыше 1000
-                            мбит/с
-                            </dd>
-                        </dl>
+                        <div className="info-banner__img scroll">
+                            <img src="img/info-banner/3.webp" alt="img" className="info-banner__image" />
                         </div>
                     </div>
-                    </div>
-                    <div className="info-banner__img scroll">
-                    <img src="img/info-banner/3.webp" alt="img" className="info-banner__image" />
-                    </div>
-                </div>
                 </div>
             </section>
             <section className="page__control-panel">
                 <div className="control-panel__container container">
-                <div className="control-panel__inner">
-                    <img src="img/control-panel/elem-3.png" alt="img" className="control-panel-elem control-panel-elem-3" />
-                    <div className="control-panel__head">
-                    <div className="control-panel__head-left scroll">
-                        <h2 className="control-panel__title main-title main-title-white">
-                        Панель управления собственной разработки
-                        </h2>
-                        <div className="control-panel__head-bottom">
-                        <img src="img/control-panel/1.svg" alt="img" className="control-panel__head-bottom-img" />
-                        <div className="control-panel__head-bottom-desc">
-                            <span className="control-panel__head-bottom-desc-name">React + Typescript +
-                            Node.JS</span>
-                            <p className="control-panel__head-bottom-desc-text">Используем топовые технологии
-                            </p>
+                    <div className="control-panel__inner">
+                        <img src="img/control-panel/elem-3.png" alt="img" className="control-panel-elem control-panel-elem-3" />
+                        <div className="control-panel__head">
+                            <div className="control-panel__head-left scroll">
+                                <h2 className="control-panel__title main-title main-title-white">
+                                    Панель управления собственной разработки
+                                </h2>
+                                <div className="control-panel__head-bottom">
+                                    <img src="img/control-panel/1.svg" alt="img" className="control-panel__head-bottom-img" />
+                                    <div className="control-panel__head-bottom-desc">
+                                        <span className="control-panel__head-bottom-desc-name">React + Typescript +
+                                            Node.JS</span>
+                                        <p className="control-panel__head-bottom-desc-text">Используем топовые технологии
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="control-panel__head-right scroll">
+                                <p className="control-panel__head-subtitle">
+                                    Интуитивно понятный интерфейс и полный контроль над хостингом. Управляйте серверами,
+                                    доменами и бекапами
+                                    в пару кликов. Максимальная автоматизация для удобной и быстрой работы.
+                                </p>
+                                <a href="#" className="control-panel__head-link btn-main">
+                                    Попробовать сейчас
+                                </a>
+                            </div>
                         </div>
+                        <div className="control-panel__img scroll">
+                            <img src="img/control-panel/elem-1.png" alt="img" className="control-panel-elem control-panel-elem-1" />
+                            <img src="img/control-panel/elem-2.png" alt="img" className="control-panel-elem control-panel-elem-2" />
+                            <img src="img/control-panel/img.png" alt="img" className="control-panel__image" />
                         </div>
                     </div>
-                    <div className="control-panel__head-right scroll">
-                        <p className="control-panel__head-subtitle">
-                        Интуитивно понятный интерфейс и полный контроль над хостингом. Управляйте серверами,
-                        доменами и бекапами
-                        в пару кликов. Максимальная автоматизация для удобной и быстрой работы.
-                        </p>
-                        <a href="#" className="control-panel__head-link btn-main">
-                        Попробовать сейчас
-                        </a>
-                    </div>
-                    </div>
-                    <div className="control-panel__img scroll">
-                    <img src="img/control-panel/elem-1.png" alt="img" className="control-panel-elem control-panel-elem-1" />
-                    <img src="img/control-panel/elem-2.png" alt="img" className="control-panel-elem control-panel-elem-2" />
-                    <img src="img/control-panel/img.png" alt="img" className="control-panel__image" />
-                    </div>
-                </div>
                 </div>
             </section>
             <section className="page__reviews" id="reviews">
                 <div className="reviews__container container">
-                <div className="reviews__inner">
-                    <div className="reviews__head scroll">
-                    <div className="reviews__name">
-                        <span className="reviews__name-sp">
-                        Фидбек от клиентов
-                        </span>
-                    </div>
-                    <div className="reviews__content">
-                        <h2 className="reviews__title main-title">
-                        Неподкупное мнение клиентов об опыте работы с нами
-                        </h2>
-                        <p className="reviews__subtitle">
-                        За много лет работы в сфере хостинг-решений,
-                        мы координально изменили подход к клиентам
-                        и контролю качества оборудования.
-                        </p>
-                    </div>
-                    </div>
-                    <div className="reviews__cards">
-                    <div className="reviews__card scroll">
-                        <p className="reviews__card-comment">
-                        <img src="img/reviews/1.svg" alt="img" className="reviews__card-img" />
-                        Ребята реально ахуенные, постоянно чёт апгрейдят, если бы не один петухан на Зиро -
-                        был бы лучший хост
-                        </p>
-                        <div className="reviews__card-author">
-                        <img src="img/reviews/AVA1.png" alt="img" className="reviews__card-author-ava" />
-                        <div className="reviews__card-author-content">
-                            <span className="reviews__card-author-name">Иоанн Цукерберг</span>
-                            <span className="reviews__card-author-post">CEO Zalupa.Studio</span>
+                    <div className="reviews__inner">
+                        <div className="reviews__head scroll">
+                            <div className="reviews__name">
+                                <span className="reviews__name-sp">
+                                    Фидбек от клиентов
+                                </span>
+                            </div>
+                            <div className="reviews__content">
+                                <h2 className="reviews__title main-title">
+                                    Неподкупное мнение клиентов об опыте работы с нами
+                                </h2>
+                                <p className="reviews__subtitle">
+                                    За много лет работы в сфере хостинг-решений,
+                                    мы координально изменили подход к клиентам
+                                    и контролю качества оборудования.
+                                </p>
+                            </div>
                         </div>
-                        </div>
-                    </div>
-                    <div className="reviews__card scroll">
-                        <p className="reviews__card-comment">
-                        <img src="img/reviews/1.svg" alt="img" className="reviews__card-img" />
-                        Да нормальный пацан Зиро, реально классный тип, если не пишет - вообще золото,
-                        классный пидорок
-                        </p>
-                        <div className="reviews__card-author">
-                        <img src="img/reviews/AVA2.png" alt="img" className="reviews__card-author-ava" />
-                        <div className="reviews__card-author-content">
-                            <span className="reviews__card-author-name">Арсений Аезович</span>
-                            <span className="reviews__card-author-post">CEO Aeza Group</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div className="reviews__card scroll">
-                        <p className="reviews__card-comment">
-                        <img src="img/reviews/1.svg" alt="img" className="reviews__card-img" />
-                        Бл#ть, помоги, он нас уже заебал своими правками, я его душу ебал, вращал и снова
-                        ебал
-                        </p>
-                        <div className="reviews__card-author">
-                        <img src="img/reviews/AVA3.png" alt="img" className="reviews__card-author-ava" />
-                        <div className="reviews__card-author-content">
-                            <span className="reviews__card-author-name">Команда MSK.Host</span>
-                            <span className="reviews__card-author-post">CEO Aeza Group</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div className="reviews__card scroll">
-                        <p className="reviews__card-comment">
-                        <img src="img/reviews/1.svg" alt="img" className="reviews__card-img" />
-                        Ребята реально ахуенные, постоянно чёт апгрейдят, если бы не один петухан на Зиро -
-                        был бы лучший хост
-                        </p>
-                        <div className="reviews__card-author">
-                        <img src="img/reviews/AVA1.png" alt="img" className="reviews__card-author-ava" />
-                        <div className="reviews__card-author-content">
-                            <span className="reviews__card-author-name">Иоанн Цукерберг</span>
-                            <span className="reviews__card-author-post">CEO Zalupa.Studio</span>
-                        </div>
+                        <div className="reviews__cards">
+                            <div className="reviews__card scroll">
+                                <p className="reviews__card-comment">
+                                    <img src="img/reviews/1.svg" alt="img" className="reviews__card-img" />
+                                    &nbsp;Вчера обратился в поддержку, безумно благодарен помощникам. Ответили за пять минут, помогли разобраться с моим маленьким вопросом.
+                                </p>
+                                <div className="reviews__card-author">
+                                    <img src="img/reviews/AVA1.png" alt="img" className="reviews__card-author-ava" />
+                                    <div className="reviews__card-author-content">
+                                        <span className="reviews__card-author-name">Александр</span>
+                                        <span className="reviews__card-author-post">Пользователь MSK.HOST</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="reviews__card scroll">
+                                <p className="reviews__card-comment">
+                                    <img src="img/reviews/1.svg" alt="img" className="reviews__card-img" />
+                                    &nbsp;Хостинг ожил в начале сентября с новой командой, даже на момент MVP никаких проблем замечено не было, цены приемлемые
+                                </p>
+                                <div className="reviews__card-author">
+                                    <img src="img/reviews/AVA2.png" alt="img" className="reviews__card-author-ava" />
+                                    <div className="reviews__card-author-content">
+                                        <span className="reviews__card-author-name">Слава</span>
+                                        <span className="reviews__card-author-post">Пользователь MSK.HOST</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="reviews__card scroll">
+                                <p className="reviews__card-comment">
+                                    <img src="img/reviews/1.svg" alt="img" className="reviews__card-img" />
+                                    &nbsp;Самый лучший хостинг, что я встречал вообще за все время. Интерфейс удобный, очень легко пользоваться услугами, взаимодействовать с ними. В общем, класс! 
+                                </p>
+                                <div className="reviews__card-author">
+                                    <img src="img/reviews/AVA3.png" alt="img" className="reviews__card-author-ava" />
+                                    <div className="reviews__card-author-content">
+                                        <span className="reviews__card-author-name">Михаил</span>
+                                        <span className="reviews__card-author-post">Пользователь MSK.HOST</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="reviews__card scroll">
+                                <p className="reviews__card-comment">
+                                    <img src="img/reviews/1.svg" alt="img" className="reviews__card-img" />
+                                    &nbsp;Ребята реально классные, постоянно что-то улучшают, с каждым днем все лучше и лучше становятся, крутые ребята. В сердечке хостинг
+                                </p>
+                                <div className="reviews__card-author">
+                                    <img src="img/reviews/AVA1.png" alt="img" className="reviews__card-author-ava" />
+                                    <div className="reviews__card-author-content">
+                                        <span className="reviews__card-author-name">Иоанн</span>
+                                        <span className="reviews__card-author-post">Пользователь MSK.HOST</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="reviews__card scroll">
-                        <p className="reviews__card-comment">
-                        <img src="img/reviews/1.svg" alt="img" className="reviews__card-img" />
-                        Да нормальный пацан Зиро, реально классный тип, если не пишет - вообще золото,
-                        классный пидорок
-                        </p>
-                        <div className="reviews__card-author">
-                        <img src="img/reviews/AVA2.png" alt="img" className="reviews__card-author-ava" />
-                        <div className="reviews__card-author-content">
-                            <span className="reviews__card-author-name">Арсений Аезович</span>
-                            <span className="reviews__card-author-post">CEO Aeza Group</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div className="reviews__card scroll">
-                        <p className="reviews__card-comment">
-                        <img src="img/reviews/1.svg" alt="img" className="reviews__card-img" />
-                        Бл#ть, помоги, он нас уже заебал своими правками, я его душу ебал, вращал и снова
-                        ебал
-                        </p>
-                        <div className="reviews__card-author">
-                        <img src="img/reviews/AVA3.png" alt="img" className="reviews__card-author-ava" />
-                        <div className="reviews__card-author-content">
-                            <span className="reviews__card-author-name">Команда MSK.Host</span>
-                            <span className="reviews__card-author-post">CEO Aeza Group</span>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
                 </div>
             </section>
             <SectionFaq></SectionFaq>
             <section className="page__start">
                 <img src="img/start/bg-img.png" alt="bg" className="start-bgb" />
                 <div className="start__container container">
-                <div className="start__inner">
-                    <div className="start__head scroll">
-                    <h2 className="start__title main-title">Готовы к запуску? Мы взлетаем!</h2>
-                    <p className="start__subtitle">
-                        Выберите сервер или зарегистрируйте домен уже сегодня и получите мощное и скоростное
-                        решение для вашего проекта.
-                    </p>
-                    <div className="start__btns scroll">
-                        <a href="#" className="start__link btn-main">Взлетаем!</a>
-                        <a href="#" className="start__link btn-2">Взлетаем!</a>
+                    <div className="start__inner">
+                        <div className="start__head scroll">
+                            <h2 className="start__title main-title">Готовы к запуску? Мы взлетаем!</h2>
+                            <p className="start__subtitle">
+                                Выберите сервер или зарегистрируйте домен уже сегодня и получите мощное и скоростное
+                                решение для вашего проекта.
+                            </p>
+                            <div className="start__btns scroll">
+                                <a href="https://my.msk.host" className="start__link btn-main">Взлетаем!</a>
+                                <a href="https://my.msk.host" className="start__link btn-2">Взлетаем!</a>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 </div>
             </section>
         </BasePage>

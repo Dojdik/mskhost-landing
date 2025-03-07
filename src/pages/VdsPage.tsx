@@ -1,7 +1,137 @@
 import { BasePage } from "@/components/common/BasePage";
 import { SectionFaq } from "@/components/section/SectionFaq";
+import { useState } from "react";
 
 export function VdsPage() {
+
+    const [activeIndex, setActiveIndex] = useState<number | null>(0);
+    const [activeCountry, setActiveCountry] = useState<number | null>(0);
+
+    function declOfNum(number: number, words: [string, string, string]) {
+        const cases = [2, 0, 1, 1, 1, 2];
+        return words[
+            number % 100 > 4 && number % 100 < 20
+                ? 2
+                : cases[number % 10 < 5 ? number % 10 : 5]
+        ];
+    };
+
+    const country = [
+        {
+            name: 'Россия',
+            img: 'r.png'
+        },
+        {
+            name: 'Германия',
+            img: 'g.png'
+        },
+        {
+            name: 'Финляндия',
+            img: 'f.png'
+        }
+    ];
+
+    const standart = [
+        {
+            "id": "f432a72e-49d4-423f-942d-ac2ff09fba55",
+            "name": "R-1",
+            "description": "desc",
+            "cost": 499,
+            "old_cost": null,
+            "location": "ru",
+            "preset_id": 18,
+            "cpu_number": 1,
+            "hdd_mib": 20480,
+            "ram_mib": 2048
+        },
+        {
+            "id": "6760947c-1468-42f7-aa6c-de40c942ae80",
+            "name": "R-2",
+            "description": "desc",
+            "cost": 799,
+            "old_cost": null,
+            "location": "ru",
+            "preset_id": 19,
+            "cpu_number": 2,
+            "hdd_mib": 40960,
+            "ram_mib": 4096
+        },
+        {
+            "id": "49192a4d-e436-46de-9cab-32d17c4e8a73",
+            "name": "R-3",
+            "description": "desc",
+            "cost": 1499,
+            "old_cost": null,
+            "location": "ru",
+            "preset_id": 20,
+            "cpu_number": 4,
+            "hdd_mib": 61440,
+            "ram_mib": 8192
+        },
+        {
+            "id": "8cde9b0b-b7e7-4db8-a015-cca921d9554a",
+            "name": "R-4",
+            "description": "desc",
+            "cost": 2499,
+            "old_cost": null,
+            "location": "ru",
+            "preset_id": 31,
+            "cpu_number": 8,
+            "hdd_mib": 92160,
+            "ram_mib": 16384
+        },
+        {
+            "id": "23ff6a04-1e0c-4343-980e-c5cf2ee1e236",
+            "name": "R-5",
+            "description": "desc",
+            "cost": 4999,
+            "old_cost": null,
+            "location": "ru",
+            "preset_id": 32,
+            "cpu_number": 16,
+            "hdd_mib": 184320,
+            "ram_mib": 32768
+        }
+    ]
+
+    const highCpu = [
+        {
+            "id": "423a3fa7-5be2-4be8-898a-ab61449457fb",
+            "name": "G-1",
+            "description": "desc",
+            "cost": 1699,
+            "old_cost": null,
+            "location": "ru",
+            "preset_id": 23,
+            "cpu_number": 4,
+            "hdd_mib": 81920,
+            "ram_mib": 4096
+        },
+        {
+            "id": "6273c246-0564-4bc2-8008-8444fa3ae8fc",
+            "name": "G-2",
+            "description": "desc",
+            "cost": 2499,
+            "old_cost": null,
+            "location": "ru",
+            "preset_id": 24,
+            "cpu_number": 8,
+            "hdd_mib": 163840,
+            "ram_mib": 8192
+        },
+        {
+            "id": "86585e3a-b104-4115-a03e-61dc52491e02",
+            "name": "G-3",
+            "description": "desc",
+            "cost": 4999,
+            "old_cost": null,
+            "location": "ru",
+            "preset_id": 25,
+            "cpu_number": 16,
+            "hdd_mib": 245760,
+            "ram_mib": 16384
+        }
+    ]
 
     const headerLogo = (
         <svg xmlns="http://www.w3.org/2000/svg" width={146} height={40} viewBox="0 0 146 40" fill="none">
@@ -20,14 +150,14 @@ export function VdsPage() {
             </g>
             <defs>
                 <clipPath id="clip0_12_54">
-                <rect width={146} height={40} fill="white" />
+                    <rect width={146} height={40} fill="white" />
                 </clipPath>
             </defs>
         </svg>
     )
 
     return (
-        <BasePage headerLogo={headerLogo}>
+        <BasePage headerLogo={headerLogo} burgerClassName=" burger-menu-wh">
             <section className="page__preview-banner scroll">
                 <div className="preview-banner__container container">
                     <div className="preview-banner__inner">
@@ -127,35 +257,16 @@ export function VdsPage() {
                             </p>
                             <div className="solutions-choice__tabs">
                                 <div className="solutions-choice__tabs-country">
-                                    <div className="solutions-choice__tab-country solutions-choice__tab-country--active">
-                                        <img src="img/solutions-choice/r.png" alt="img" className="solutions-choice__tab-country-img" />
-                                        Россия
-                                    </div>
-                                    <div className="solutions-choice__tab-country">
-                                        <img src="img/solutions-choice/n.png" alt="img" className="solutions-choice__tab-country-img" />
-                                        Нидерланды
-                                    </div>
-                                    <div className="solutions-choice__tab-country">
-                                        <img src="img/solutions-choice/g.png" alt="img" className="solutions-choice__tab-country-img" />
-                                        Германия
-                                    </div>
-                                    <div className="solutions-choice__tab-country">
-                                        <img src="img/solutions-choice/f.png" alt="img" className="solutions-choice__tab-country-img" />
-                                        Финляндия
-                                    </div>
+                                    {country.map((x, i) => (
+                                        <div className={`solutions-choice__tab-country ${activeCountry === i ? "solutions-choice__tab-country--active" : ""}`} key={i} onClick={() => setActiveCountry(i)}>
+                                            <img src={`img/solutions-choice/${x.img}`} alt="img" className="solutions-choice__tab-country-img" />
+                                            {x.name}
+                                        </div>
+                                    ))}
                                 </div>
                                 <div className="solutions-choice__tabs-date">
                                     <div className="solutions-choice__tab-date solutions-choice__tab-date--active">
-                                        День
-                                    </div>
-                                    <div className="solutions-choice__tab-date">
                                         Месяц
-                                    </div>
-                                    <div className="solutions-choice__tab-date">
-                                        Квартал
-                                    </div>
-                                    <div className="solutions-choice__tab-date">
-                                        Год
                                     </div>
                                 </div>
                             </div>
@@ -178,255 +289,17 @@ export function VdsPage() {
                             </p>
                         </div>
                         <div className="solutions-choice__item-right">
-                            <div className="solutions-choice__item-tab scroll">
-                                <span className="solutions-choice__item-tab-value">2 ядра</span>
-                                <span className="solutions-choice__item-tab-value">4 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">80 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">499
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab scroll">
-                                <span className="solutions-choice__item-tab-value">4 ядра</span>
-                                <span className="solutions-choice__item-tab-value">8 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">160 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">799
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab scroll solutions-choice__item-tab--active">
-                                <span className="solutions-choice__item-tab-value">8 ядер</span>
-                                <span className="solutions-choice__item-tab-value">16 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">240 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">1
-                                    499 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab scroll">
-                                <span className="solutions-choice__item-tab-value">16 ядер</span>
-                                <span className="solutions-choice__item-tab-value">32 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">480 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">2
-                                    299 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab scroll">
-                                <span className="solutions-choice__item-tab-value">32 ядра</span>
-                                <span className="solutions-choice__item-tab-value">64 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">1 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">3
-                                    799 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab scroll">
-                                <span className="solutions-choice__item-tab-value">64 ядра</span>
-                                <span className="solutions-choice__item-tab-value">128 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">2 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">6
-                                    299 ₽ /мес</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="solutions-choice__item">
-                        <img src="img/solutions-choice/img-1.png" alt="img" className="solutions-choice__item-bg" />
-                        <div className="solutions-choice__item-left">
-                            <h3 className="solutions-choice__item-title">
-                                На базе процессора
-                                <span className="solutions-choice__item-title-sp">AMD Ryzen 9 7950X3D</span>
-                            </h3>
-                            <p className="solutions-choice__item-desc">
-                                Процессор Ryzen 9 7950x3D <br />
-                                Частота 4.2 - 5.7 ГГц <br />
-                                Базовая DDoS-защита <br />
-                                Публичный адрес IPv4 <br />
-                                Интернет до 1 Гбит/с <br />
-                                Трафик ∞
-                            </p>
-                        </div>
-                        <div className="solutions-choice__item-right">
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">2 ядра</span>
-                                <span className="solutions-choice__item-tab-value">4 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">80 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">499
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">14 ядра</span>
-                                <span className="solutions-choice__item-tab-value">8 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">160 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">799
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab solutions-choice__item-tab--active">
-                                <span className="solutions-choice__item-tab-value">18 ядер</span>
-                                <span className="solutions-choice__item-tab-value">16 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">240 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">1
-                                    499 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">16 ядер</span>
-                                <span className="solutions-choice__item-tab-value">32 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">480 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">2
-                                    299 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">32 ядра</span>
-                                <span className="solutions-choice__item-tab-value">164 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">1 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">3
-                                    799 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">64 ядра</span>
-                                <span className="solutions-choice__item-tab-value">128 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">2 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">6
-                                    299 ₽ /мес</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="solutions-choice__item">
-                        <img src="img/solutions-choice/img-1.png" alt="img" className="solutions-choice__item-bg" />
-                        <div className="solutions-choice__item-left">
-                            <h3 className="solutions-choice__item-title">
-                                На базе процессора
-                                <span className="solutions-choice__item-title-sp">AMD Ryzen 9 7950X3D</span>
-                            </h3>
-                            <p className="solutions-choice__item-desc">
-                                Процессор Ryzen 9 7950x3D <br />
-                                Частота 4.2 - 5.7 ГГц <br />
-                                Базовая DDoS-защита <br />
-                                Публичный адрес IPv4 <br />
-                                Интернет до 1 Гбит/с <br />
-                                Трафик ∞
-                            </p>
-                        </div>
-                        <div className="solutions-choice__item-right">
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">2 ядра</span>
-                                <span className="solutions-choice__item-tab-value">4 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">80 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">499
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">4 ядра</span>
-                                <span className="solutions-choice__item-tab-value">8 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">160 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">799
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab solutions-choice__item-tab--active">
-                                <span className="solutions-choice__item-tab-value">8 ядер</span>
-                                <span className="solutions-choice__item-tab-value">16 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">240 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">1
-                                    499 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">16 ядер</span>
-                                <span className="solutions-choice__item-tab-value">32 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">480 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">2
-                                    299 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">32 ядра</span>
-                                <span className="solutions-choice__item-tab-value">64 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">1 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">3
-                                    799 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">64 ядра</span>
-                                <span className="solutions-choice__item-tab-value">128 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">2 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">6
-                                    299 ₽ /мес</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="solutions-choice__item">
-                        <img src="img/solutions-choice/img-1.png" alt="img" className="solutions-choice__item-bg" />
-                        <div className="solutions-choice__item-left">
-                            <h3 className="solutions-choice__item-title">
-                                На базе процессора
-                                <span className="solutions-choice__item-title-sp">AMD Ryzen 9 7950X3D</span>
-                            </h3>
-                            <p className="solutions-choice__item-desc">
-                                Процессор Ryzen 9 7950x3D <br />
-                                Частота 4.2 - 5.7 ГГц <br />
-                                Базовая DDoS-защита <br />
-                                Публичный адрес IPv4 <br />
-                                Интернет до 1 Гбит/с <br />
-                                Трафик ∞
-                            </p>
-                        </div>
-                        <div className="solutions-choice__item-right">
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">2 ядра</span>
-                                <span className="solutions-choice__item-tab-value">4 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">80 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">499
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">4 ядра</span>
-                                <span className="solutions-choice__item-tab-value">8 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">160 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">799
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab solutions-choice__item-tab--active">
-                                <span className="solutions-choice__item-tab-value">8 ядер</span>
-                                <span className="solutions-choice__item-tab-value">16 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">240 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">1
-                                    499 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">16 ядер</span>
-                                <span className="solutions-choice__item-tab-value">32 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">480 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">2
-                                    299 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">32 ядра</span>
-                                <span className="solutions-choice__item-tab-value">64 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">1 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">3
-                                    799 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">64 ядра</span>
-                                <span className="solutions-choice__item-tab-value">128 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">2 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">6
-                                    299 ₽ /мес</span>
-                            </div>
+                            {standart.map((x, i) => (
+                                <div className={`solutions-choice__item-tab scroll ${activeIndex === i ? "solutions-choice__item-tab--active" : ""}`} key={i} onClick={() => setActiveIndex(i)}>
+                                    <span className="solutions-choice__item-tab-value">
+                                        {x.cpu_number} {declOfNum(x.cpu_number, ["ядро", "ядра", "ядер"])}
+                                    </span>
+                                    <span className="solutions-choice__item-tab-value">{x.ram_mib / 1024} ГБ DDR4</span>
+                                    <span className="solutions-choice__item-tab-value">{x.hdd_mib / 1024} ГБ NMVe</span>
+                                    <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
+                                    <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">{x.cost} ₽ /мес</span>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -446,35 +319,16 @@ export function VdsPage() {
                             </p>
                             <div className="solutions-choice__tabs">
                                 <div className="solutions-choice__tabs-country">
-                                    <div className="solutions-choice__tab-country solutions-choice__tab-country--active">
-                                        <img src="img/solutions-choice/r.png" alt="img" className="solutions-choice__tab-country-img" />
-                                        Россия
-                                    </div>
-                                    <div className="solutions-choice__tab-country">
-                                        <img src="img/solutions-choice/n.png" alt="img" className="solutions-choice__tab-country-img" />
-                                        Нидерланды
-                                    </div>
-                                    <div className="solutions-choice__tab-country">
-                                        <img src="img/solutions-choice/g.png" alt="img" className="solutions-choice__tab-country-img" />
-                                        Германия
-                                    </div>
-                                    <div className="solutions-choice__tab-country">
-                                        <img src="img/solutions-choice/f.png" alt="img" className="solutions-choice__tab-country-img" />
-                                        Финляндия
-                                    </div>
+                                    {country.map((x, i) => (
+                                        <div className={`solutions-choice__tab-country ${activeCountry === i ? "solutions-choice__tab-country--active" : ""}`} key={i} onClick={() => setActiveCountry(i)}>
+                                            <img src={`img/solutions-choice/${x.img}`} alt="img" className="solutions-choice__tab-country-img" />
+                                            {x.name}
+                                        </div>
+                                    ))}
                                 </div>
                                 <div className="solutions-choice__tabs-date">
                                     <div className="solutions-choice__tab-date solutions-choice__tab-date--active">
-                                        День
-                                    </div>
-                                    <div className="solutions-choice__tab-date">
                                         Месяц
-                                    </div>
-                                    <div className="solutions-choice__tab-date">
-                                        Квартал
-                                    </div>
-                                    <div className="solutions-choice__tab-date">
-                                        Год
                                     </div>
                                 </div>
                             </div>
@@ -497,255 +351,17 @@ export function VdsPage() {
                             </p>
                         </div>
                         <div className="solutions-choice__item-right">
-                            <div className="solutions-choice__item-tab scroll">
-                                <span className="solutions-choice__item-tab-value">2 ядра</span>
-                                <span className="solutions-choice__item-tab-value">4 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">80 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">499
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab scroll">
-                                <span className="solutions-choice__item-tab-value">4 ядра</span>
-                                <span className="solutions-choice__item-tab-value">8 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">160 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">799
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab scroll solutions-choice__item-tab--active">
-                                <span className="solutions-choice__item-tab-value">8 ядер</span>
-                                <span className="solutions-choice__item-tab-value">16 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">240 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">1
-                                    499 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab scroll">
-                                <span className="solutions-choice__item-tab-value">16 ядер</span>
-                                <span className="solutions-choice__item-tab-value">32 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">480 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">2
-                                    299 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab scroll">
-                                <span className="solutions-choice__item-tab-value">32 ядра</span>
-                                <span className="solutions-choice__item-tab-value">64 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">1 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">3
-                                    799 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab scroll">
-                                <span className="solutions-choice__item-tab-value">64 ядра</span>
-                                <span className="solutions-choice__item-tab-value">128 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">2 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">6
-                                    299 ₽ /мес</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="solutions-choice__item">
-                        <img src="img/solutions-choice/img-2.png" alt="img" className="solutions-choice__item-bg" />
-                        <div className="solutions-choice__item-left">
-                            <h3 className="solutions-choice__item-title">
-                                На базе процессора
-                                <span className="solutions-choice__item-title-sp">AMD Ryzen 9 7950X3D</span>
-                            </h3>
-                            <p className="solutions-choice__item-desc">
-                                Процессор Ryzen 9 7950x3D <br />
-                                Частота 4.2 - 5.7 ГГц <br />
-                                Базовая DDoS-защита <br />
-                                Публичный адрес IPv4 <br />
-                                Интернет до 1 Гбит/с <br />
-                                Трафик ∞
-                            </p>
-                        </div>
-                        <div className="solutions-choice__item-right">
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">2 ядра</span>
-                                <span className="solutions-choice__item-tab-value">4 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">80 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">499
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">4 ядра</span>
-                                <span className="solutions-choice__item-tab-value">8 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">160 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">799
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab solutions-choice__item-tab--active">
-                                <span className="solutions-choice__item-tab-value">8 ядер</span>
-                                <span className="solutions-choice__item-tab-value">16 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">240 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">1
-                                    499 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">16 ядер</span>
-                                <span className="solutions-choice__item-tab-value">32 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">480 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">2
-                                    299 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">32 ядра</span>
-                                <span className="solutions-choice__item-tab-value">64 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">1 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">3
-                                    799 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">64 ядра</span>
-                                <span className="solutions-choice__item-tab-value">128 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">2 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">6
-                                    299 ₽ /мес</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="solutions-choice__item">
-                        <img src="img/solutions-choice/img-2.png" alt="img" className="solutions-choice__item-bg" />
-                        <div className="solutions-choice__item-left">
-                            <h3 className="solutions-choice__item-title">
-                                На базе процессора
-                                <span className="solutions-choice__item-title-sp">AMD Ryzen 9 7950X3D</span>
-                            </h3>
-                            <p className="solutions-choice__item-desc">
-                                Процессор Ryzen 9 7950x3D <br />
-                                Частота 4.2 - 5.7 ГГц <br />
-                                Базовая DDoS-защита <br />
-                                Публичный адрес IPv4 <br />
-                                Интернет до 1 Гбит/с <br />
-                                Трафик ∞
-                            </p>
-                        </div>
-                        <div className="solutions-choice__item-right">
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">2 ядра</span>
-                                <span className="solutions-choice__item-tab-value">4 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">80 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">499
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">4 ядра</span>
-                                <span className="solutions-choice__item-tab-value">8 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">160 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">799
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab solutions-choice__item-tab--active">
-                                <span className="solutions-choice__item-tab-value">8 ядер</span>
-                                <span className="solutions-choice__item-tab-value">16 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">240 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">1
-                                    499 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">16 ядер</span>
-                                <span className="solutions-choice__item-tab-value">32 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">480 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">2
-                                    299 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">32 ядра</span>
-                                <span className="solutions-choice__item-tab-value">64 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">1 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">3
-                                    799 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">64 ядра</span>
-                                <span className="solutions-choice__item-tab-value">128 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">2 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">6
-                                    299 ₽ /мес</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="solutions-choice__item">
-                        <img src="img/solutions-choice/img-2.png" alt="img" className="solutions-choice__item-bg" />
-                        <div className="solutions-choice__item-left">
-                            <h3 className="solutions-choice__item-title">
-                                На базе процессора
-                                <span className="solutions-choice__item-title-sp">AMD Ryzen 9 7950X3D</span>
-                            </h3>
-                            <p className="solutions-choice__item-desc">
-                                Процессор Ryzen 9 7950x3D <br />
-                                Частота 4.2 - 5.7 ГГц <br />
-                                Базовая DDoS-защита <br />
-                                Публичный адрес IPv4 <br />
-                                Интернет до 1 Гбит/с <br />
-                                Трафик ∞
-                            </p>
-                        </div>
-                        <div className="solutions-choice__item-right">
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">2 ядра</span>
-                                <span className="solutions-choice__item-tab-value">4 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">80 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">499
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">4 ядра</span>
-                                <span className="solutions-choice__item-tab-value">8 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">160 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">799
-                                    ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab solutions-choice__item-tab--active">
-                                <span className="solutions-choice__item-tab-value">8 ядер</span>
-                                <span className="solutions-choice__item-tab-value">16 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">240 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">1
-                                    499 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">16 ядер</span>
-                                <span className="solutions-choice__item-tab-value">32 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">480 ГБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">2
-                                    299 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">32 ядра</span>
-                                <span className="solutions-choice__item-tab-value">64 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">1 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">3
-                                    799 ₽ /мес</span>
-                            </div>
-                            <div className="solutions-choice__item-tab">
-                                <span className="solutions-choice__item-tab-value">64 ядра</span>
-                                <span className="solutions-choice__item-tab-value">128 ГБ DDR4</span>
-                                <span className="solutions-choice__item-tab-value">2 ТБ NMVe</span>
-                                <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
-                                <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">6
-                                    299 ₽ /мес</span>
-                            </div>
+                            {highCpu.map((x, i) => (
+                                <div className={`solutions-choice__item-tab scroll ${activeIndex === i ? "solutions-choice__item-tab--active" : ""}`} key={i} onClick={() => setActiveIndex(i)}>
+                                    <span className="solutions-choice__item-tab-value">
+                                        {x.cpu_number} {declOfNum(x.cpu_number, ["ядро", "ядра", "ядер"])}
+                                    </span>
+                                    <span className="solutions-choice__item-tab-value">{x.ram_mib / 1024} ГБ DDR4</span>
+                                    <span className="solutions-choice__item-tab-value">{x.hdd_mib / 1024} ГБ NMVe</span>
+                                    <span className="solutions-choice__item-tab-value">1 Гбит/с</span>
+                                    <span className="solutions-choice__item-tab-value solutions-choice__item-tab-value-price">{x.cost} ₽ /мес</span>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -809,7 +425,7 @@ export function VdsPage() {
                                 Мы предоставляем нашим клиентам выбор из десятков дистрибутивов операционных систем и
                                 приложений, которые уже готовы к настройке, просто выбирайте и пользуйтесь!
                             </p>
-                            <a href="#" className="statistics__link btn-main">
+                            <a href="https://my.msk.host" className="statistics__link btn-main">
                                 В личный кабинет
                                 <svg xmlns="http://www.w3.org/2000/svg" width={21} height={21} viewBox="0 0 21 21" fill="none">
                                     <path d="M3.5 10.5L17.5 10.5M17.5 10.5L12.25 15.75M17.5 10.5L12.25 5.25" stroke="white" strokeWidth="1.58333" strokeLinecap="round" strokeLinejoin="round" />
@@ -865,14 +481,14 @@ export function VdsPage() {
                                 <div className="statistics__card scroll">
                                     <dl className="statistics__card-list">
                                         <dt className="statistics__card-name">
-                                            03<span className="statistics__card-name-sp">:</span>57
+                                            00<span className="statistics__card-name-sp">:</span>37
                                         </dt>
                                         <dd className="statistics__card-desc">От покупки до запуска</dd>
                                     </dl>
                                 </div>
                             </div>
                         </div>
-                        <a href="#" className="statistics__link statistics__link-mob btn-main">
+                        <a href="https://my.msk.host" className="statistics__link statistics__link-mob btn-main">
                             В личный кабинет
                             <svg xmlns="http://www.w3.org/2000/svg" width={21} height={21} viewBox="0 0 21 21" fill="none">
                                 <path d="M3.5 10.5L17.5 10.5M17.5 10.5L12.25 15.75M17.5 10.5L12.25 5.25" stroke="white" strokeWidth="1.58333" strokeLinecap="round" strokeLinejoin="round" />
